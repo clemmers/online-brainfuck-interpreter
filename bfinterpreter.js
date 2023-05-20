@@ -1,12 +1,13 @@
 
-function run_bf_code() {
-    let user_code_str = document.getElementById("user-code").value;
-    let user_input_str = document.getElementById("user-input").value;
+onmessage = (e) => {
+    run_bf_code(e.data.user_code_str, e.data.user_input_str);
+};
+
+
+function run_bf_code(user_code_str, user_input_str) {
     let user_input_index = 0;
     let memory = new Uint8Array(30_000);
     let pointer_pos = 0;
-    let user_output = document.getElementById("output");
-    user_output.value = "";
     
     ensure_correct_braces(user_code_str);
     let bf_code = "";
@@ -19,7 +20,7 @@ function run_bf_code() {
             	bf_code += "}";
             	break;
             case '.':
-            	bf_code += "user_output.value += String.fromCharCode(memory[pointer_pos]);";
+            	bf_code += "postMessage(String.fromCharCode(memory[pointer_pos]));";
             	break;
             case ',':
                 bf_code += `if(user_input_index < user_input_str.length) {

@@ -60,7 +60,6 @@
         }
         
   </style>
-  <script src="bfinterpereter.js"></script>
 </head>
 <body>
     <div id="input-output-wrapper">
@@ -68,7 +67,7 @@
         <textarea id="user-code" class="wrapper-items" placeholder="Your code here.."></textarea>
         
         <input id="user-input" class="wrapper-items" placeholder="input" />
-        <button id="run" class="wrapper-items" onclick="run_bf_code();">run</button>
+        <button id="run" class="wrapper-items" onclick="run_code()">run</button>
         <label>Output:</label>
         <textarea id="output" class="wrapper-items" disabled></textarea>
     </div>
@@ -78,6 +77,23 @@
         document.getElementById("user-code").value = `[hello world program]
 
 ++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>++.>+.+++++++..+++.<<++.>+++++++++++++++.>.+++.------.--------.<<+.<.`;
+        var myWoderfulWorkerSlaveUnpaidInternSlaveWorker;
+
+        function run_code() {
+            let output = document.getElementById("output");
+            output.value = "";
+            if (typeof(w) != "undefined") {
+                myWoderfulWorkerSlaveUnpaidInternSlaveWorker.terminate();
+                myWoderfulWorkerSlaveUnpaidInternSlaveWorker = undefined;
+            }
+            myWoderfulWorkerSlaveUnpaidInternSlaveWorker = new Worker("bfinterpreter.js");
+            myWoderfulWorkerSlaveUnpaidInternSlaveWorker.postMessage({
+                user_code_str: document.getElementById("user-code").value,
+                user_input_str: document.getElementById("user-input").value});
+            myWoderfulWorkerSlaveUnpaidInternSlaveWorker.onmessage = (e) => {
+                output.value += e.data;
+            };
+        }
     </script>
 </body>
 </html>
