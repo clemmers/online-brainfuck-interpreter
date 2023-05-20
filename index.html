@@ -11,6 +11,7 @@
             margin: 0;
             overflow: hidden;
             height:100%;
+            background-color: #F5F5DC;
             
         }
         body
@@ -29,13 +30,14 @@
 
         #title-marquee {
             font-family: 'Rocher';
+            margin: 0px;
+            padding: 0px;
         }
         
         #input-output-wrapper {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            
+            justify-content: space-evenly;
             width: 60%;
             height: 100%;
             border: 4mm ridge rgba(211, 220, 50, .6);
@@ -67,7 +69,9 @@
     
     <script>
         // sets default value for user code (hello world program)
-        document.getElementById("user-code").value = "++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>++.>+.+++++++..+++.<<++.>+++++++++++++++.>.+++.------.--------.<<+.<.";
+        document.getElementById("user-code").value = `[hello world program]
+
+++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>++.>+.+++++++..+++.<<++.>+++++++++++++++.>.+++.------.--------.<<+.<.`;
     </script>
 </body>
 </html>
