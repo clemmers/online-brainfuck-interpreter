@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>brainfrick interpereter</title>
+    <link href="style.css" rel="stylesheet" />
+    <style>
+        html, body
+        {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            height:100%;
+            
+        }
+        body
+        {
+          display: flex;
+          justify-content: space-evenly;
+          flex-direction: column;
+          align-items: center;
+        }
+        
+        @font-face {
+          font-family: 'Rocher';
+          src: url("./fonts/RocherColorGX.woff");
+        }
+        
+
+        #title-marquee {
+            font-family: 'Rocher';
+        }
+        
+        #input-output-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            width: 60%;
+            height: 100%;
+            border: 4mm ridge rgba(211, 220, 50, .6);
+        }
+        .wrapper-items {
+            border: 2px solid black;
+            margin: 1%;
+        }
+        #output {
+            color: black;
+        }
+        textarea {
+            height: 30%;
+        }
+        
+  </style>
+  <script src="bfinterpereter.js"></script>
+</head>
+<body>
+    <div id="input-output-wrapper">
+        <marquee id="title-marquee"><h1>brainfrick interpereter</h1></marquee>
+        <textarea id="user-code" class="wrapper-items" placeholder="Your code here.."></textarea>
+        
+        <input id="user-input" class="wrapper-items" placeholder="input" />
+        <button id="run" class="wrapper-items" onclick="run_bf_code();">run</button>
+        <label>Output:</label>
+        <textarea id="output" class="wrapper-items" disabled></textarea>
+    </div>
+    
+    <script>
+        // sets default value for user code (hello world program)
+        document.getElementById("user-code").value = "++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>++.>+.+++++++..+++.<<++.>+++++++++++++++.>.+++.------.--------.<<+.<.";
+    </script>
+</body>
+</html>
