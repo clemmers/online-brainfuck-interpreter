@@ -89,16 +89,16 @@ function run_bf_code(user_code_str, user_input_str) {
                     break;
                 case ']':
                     if(counter === 0) {
-                        document.getElementById("output").value = `unexpected closing bracket at the ${i+1}th character!`;
-                        //throw new Error(`unexpected closing bracket at the ${i+1}th character!`);
+                        postMessage(`ERROR! unexpected closing bracket at the ${i+1}th character!`);
+                        throw new Error(`unexpected closing bracket at the ${i+1}th character!`);
                     }
                     counter--;
                     break;
             }
     	}
         if(counter > 0) {
-            document.getElementById("output").value = `incorrect combination of braces! missing ${counter} closing braces`;
-            //throw new Error(`incorrect combination of braces! missing ${counter} closing braces`);
+            postMessage(`ERROR! incorrect combination of braces! missing ${counter} closing braces`);
+            throw new Error(`incorrect combination of braces! missing ${counter} closing braces`);
     	}
     }
 }
